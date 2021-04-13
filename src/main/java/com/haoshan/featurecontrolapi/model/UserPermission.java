@@ -2,7 +2,7 @@ package com.haoshan.featurecontrolapi.model;
 
 import lombok.Data;
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Data
 @Entity
@@ -12,11 +12,11 @@ public class UserPermission {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @NotBlank
+    @NotNull
     private int userId;
-    @NotBlank
+    @NotNull
     private int featureId;
-    @NotBlank
+    @NotNull
     private boolean isEnabled;
 
     public UserPermission(){

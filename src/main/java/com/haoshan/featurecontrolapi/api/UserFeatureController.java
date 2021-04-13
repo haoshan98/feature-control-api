@@ -44,12 +44,14 @@ public class UserFeatureController {
                     .body(new FeatureResponse(userPermission.isEnabled()));
 
         } catch (RuntimeException ex) {
+            System.out.println(ex.getMessage());
             throw ex;
         }
     }
 
     @PostMapping
     ResponseEntity<String> featureToggle(@Valid @NotNull @RequestBody FeatureToggleRequest featureToggleRequest) {
+
         try {
             User user = userService.getUserByEmail(featureToggleRequest.getEmail());
             Feature feature = featureService.getFeatureByName(featureToggleRequest.getFeatureName());
@@ -58,12 +60,8 @@ public class UserFeatureController {
             if (currentPermission != null) {
                 newPermission.setId(currentPermission.getId());
             }
-            System.out.println("here1");
-            System.out.println(newPermission.getUserId());
-            System.out.println(newPermission.getFeatureId());
-            System.out.println(newPermission.isEnabled());
+
             userPermissionService.updateOrAddUserPermission(newPermission);
-            System.out.println("here2");
 
             return new ResponseEntity<>(HttpStatus.OK);
 
