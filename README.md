@@ -16,9 +16,9 @@ API Path: ```/api/v1```
     Receive request in JSON:
     ```
     {
-      "feature": "xxx", (string)
+      "featureName": "xxx", (string)
       "email": "xxx", (string)
-      "enable": true|false (boolean) (uses true to enable a user's access, otherwise false)
+      "enable": true|false (boolean) (uses true to enable a user's access, false otherwise)
     }
     ```
     Return Status: *HTTP Status OK (200)* or *HTTP Status Not Modifies (304)*
