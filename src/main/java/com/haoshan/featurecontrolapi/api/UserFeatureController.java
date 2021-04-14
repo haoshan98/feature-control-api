@@ -31,8 +31,8 @@ public class UserFeatureController {
     UserPermissionService userPermissionService;
 
     @GetMapping
-    ResponseEntity<FeatureResponse> checkUserAccess(@Valid @NotNull @RequestParam String email,
-                                                    @Valid @NotNull @RequestParam String featureName) {
+    ResponseEntity<FeatureResponse> checkUserPermission(@Valid @NotNull @RequestParam String featureName,
+                                                        @Valid @NotNull @RequestParam String email) {
         try {
             User user = userService.getUserByEmail(email);
             Feature feature = featureService.getFeatureByName(featureName);
